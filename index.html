@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.login-container, .register-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #007BFF;
+}
+
+button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+p {
+    text-align: center;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+  </style>
+  
+</head>
+<body >
+
+    <div class="register-container">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+
+            <button type="submit" id="registerButton">Register</button>
+
+            <p>Already have an account? <a href="#" id="loginLink">Login here</a></p>
+        </form>
+    </div>
+
+    <script>
+  // Registration form handling
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password === confirmPassword && password.length >= 6) {
+        // Here we send the registration data to email (you would need a backend to actually send emails)
+        sendRegistrationData(phone, email, password);
+
+        // Redirect to the login page after successful registration
+        window.location.href = "login.html"; // Set the login page link here
+    } else {
+        alert('Passwords do not match or password is too short.');
+    }
+});
+
+// Simulated function to send registration data to email (replace with backend implementation)
+function sendRegistrationData(phone, email, password) {
+    // This is just a placeholder function.
+    // You need a backend service (e.g., using Node.js, PHP, or an email API) to send this data to an email.
+
+    console.log(`Sending registration data to email...`);
+    console.log(`Phone: ${phone}`);
+    console.log(`Email: ${email}`);
+    console.log(`Password: ${password}`);
+
+    // You would use something like an email API to send this data
+    alert('Registration successful! Redirecting to login page.');
+}
+
+// Link to the login page (you can set the login page link here)
+document.getElementById('loginLink').addEventListener('click', function(event) {
+    event.preventDefault();
+    window.location.href = "www.google.com"; // Set the login page link here
+});
+
+  </script>
+</body>
+</html>
